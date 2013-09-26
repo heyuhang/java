@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+
+	<bean id="linuxdb"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+			value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url"
+			value="jdbc:mysql://127.0.0.1/xiyou_linux">
+		</property>
+		<property name="username" value="root"></property>
+		<property name="password" value="heyuhang"></property>
+	</bean>
+	<bean id="hsid"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="linuxdb" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>Hibernate/File.hbm.xml</value>
+				<value>Hibernate/Manager.hbm.xml</value>
+				<value>Hibernate/Photo.hbm.xml</value>
+				<value>Hibernate/index/Photoindex.hbm.xml</value>
+				<value>Hibernate/index/Fileindex.hbm.xml</value>
+				<value>Hibernate/Member.hbm.xml</value>
+				<value>Hibernate/index/Memberindex.hbm.xml</value>
+			</list>
+		</property></bean>
+	<bean id="FileDAO" class="Hibernate.FileDAO">
+		<property name="sessionFactory">
+			<ref bean="hsid" />
+		</property>
+	</bean>
+
+					<!-- 注册服务类 -->
+	<bean id="FileServiceImpl" class="com.hyh.service.FileServiceImpl">
+		<property name="filedao">
+			<ref bean="FileDAO"/>
+		</property>
+	</bean>
+		<bean id="userServiceImpl" class="com.hyh.service.userServiceImpl">
+		<property name="mdao">
+			<ref bean="ManagerDAO"/>
+		</property>
+	</bean>
+
+		<bean id="photoServiceImpl" class="com.hyh.service.photoServiceImpl">
+		<property name="pdao">
+			<ref bean="PhotoDAO"/>
+		</property>
+		</bean>
+		<bean id="photoIndexServiceImpl" class="com.hyh.index.service.photoIndexServiceImpl">
+		<property name="pidao">
+			<ref bean="PhotoindexDAO"/>
+		</property>
+		</bean>
+		<bean id="fileIndexServiceImpl" class="com.hyh.index.service.fileIndexServiceImpl">
+		<property name="fidao">
+			<ref bean="FileindexDAO"/>
+		</property>
+		</bean>
+	   <bean id="memberServiceImpl" class="com.hyh.service.memberServiceImpl">
+		<property name="mdao">
+			<ref bean="MemberDAO"/>
+		</property>
+		</bean>
+	   <bean id="memIndexServiceImpl" class="com.hyh.index.service.memIndexServiceImpl">
+		<property name="midao">
+			<ref bean="MemberindexDAO"/>
+		</property>
+		</bean>
+
+
+		<bean id="ManagerDAO" class="Hibernate.ManagerDAO">
+			<property name="sessionFactory">
+				<ref bean="hsid" />
+			</property>
+		</bean>
+		<bean id="PhotoDAO" class="Hibernate.PhotoDAO">
+			<property name="sessionFactory">
+				<ref bean="hsid" />
+			</property>
+		</bean>
+		<bean id="PhotoindexDAO"
+			class="Hibernate.index.PhotoindexDAO">
+			<property name="sessionFactory">
+				<ref bean="hsid" />
+			</property>
+		</bean>
+		<bean id="FileindexDAO" class="Hibernate.index.FileindexDAO">
+			<property name="sessionFactory">
+				<ref bean="hsid" />
+			</property>
+		</bean>
+		<bean id="MemberDAO" class="Hibernate.MemberDAO">
+			<property name="sessionFactory">
+				<ref bean="hsid" />
+			</property>
+		</bean>
+		<bean id="MemberindexDAO"
+			class="Hibernate.index.MemberindexDAO">
+			<property name="sessionFactory">
+				<ref bean="hsid" />
+			</property>
+		</bean>
+
+</beans>

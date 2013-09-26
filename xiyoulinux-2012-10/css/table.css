@@ -1,0 +1,18 @@
+.file
+{
+	border:1px solid #cfd2d6;
+}
+.tr
+{
+	background-color:#d9930b;
+	color:red;
+	text-align:center;
+}
+.tb
+{
+	border-top:1px solid #d9930b;
+}
+.tc
+{
+	background-color:#cfd2d6;
+}

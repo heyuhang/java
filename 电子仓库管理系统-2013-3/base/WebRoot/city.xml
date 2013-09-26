@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="GBK"?>
+<citys>
+	<city>
+		<name>西安</name>
+		<value>xa</value>
+	</city>
+	<city>
+		<name>北京</name>
+		<value>bj</value>
+	</city>
+	<city>
+		<name>上海</name>
+		<value>sh</value>
+	</city>
+	<city>
+		<name>深圳</name>
+		<value>sz</value>
+	</city>
+	<city>
+		<name>广州</name>
+		<value>gz</value>
+	</city>
+	<city>
+		<name>成都</name>
+		<value>cd</value>
+	</city>
+	<city>
+		<name>香港</name>
+		<value>xg</value>
+	</city>
+</citys>
