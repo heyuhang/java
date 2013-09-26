@@ -1,0 +1,423 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta content="西邮linuxgroup,linux,西邮,西邮linux兴趣小组" name="keywords"></meta>
+<meta content="西邮linux兴趣小组官网" name="description"></meta>
+<link rel="shortcut icon" href="./images/topl.jpg" type="image/x-icon" />
+<link rel="icon" href="./images/topl.jpg" type="image/gif" >
+<title>pianliao</title>
+<script src="js/CJL.0.1.min.js"></script>
+<script src="js/AlertBox.js"></script>
+<script src="js/index_ajax.js"></script>
+<script src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.4.min.js"></script>
+<link href="css/user" rel="stylesheet" type="text/css" />
+<style>
+body{
+	background: #D2D1D0;
+	margin:0;
+	padding:0;
+}
+*{
+	margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-weight: inherit;
+    font-style: inherit;
+    font-size: 100%;
+	font-family:inherit,"Helvetica Neue",Arial;
+	vertical-align: baseline;
+}
+#header{
+	width: 100%;
+	position: fixed;
+	top: 0px; /* position fixed for IE6 */
+	_position: absolute;
+	_top: expression(documentElement.scrollTop + "px");
+	opacity:0.9;
+	height:35px;
+	background-color: rgb(50, 40, 31);
+	box-shadow: 0px 0px 3px rgb(0, 0, 0);
+	
+}
+#footer {
+	border-top:1px solid #BBB;
+    color: rgb(143, 136, 124);
+    font: 12px/22px tahoma,Geneva,sans-serif;
+	z-index:2000;
+	margin-top:15px;
+	height:50px;
+	font-size:15px;
+	text-align:center;
+}
+#header .toplogo{
+	width:197px;
+	height:45px;
+	left:200px;
+	position: absolute;
+}
+#header ul li{
+	float:left;
+	padding:6px 15px;
+	list-style:none;
+}
+#header .top{
+	right:100px;
+	position: absolute;
+}
+#header .top ul li a{
+	color:#C5C5C5;
+	text-decoration:none;
+}
+#header .top ul li a:hover{
+	color:#fff;
+	font-weight:bold;
+}
+.line{
+	background:url(./images/linebg.gif) repeat-x;
+	border-bottom:1px solid #D2D1D0;
+	overfloat: hidden; 
+	height:10px;
+}
+#contents_intro,#contents_active,#contents_zoom,#contents_com{
+	width:850px;
+	margin:0 auto;
+	margin-top:50px;
+	border-left:1px solid #000;
+	border-right:1px solid #000;
+	padding:10px;
+	background-color:#fff;
+}
+.group_menu{
+	color:#fff;
+	width:400px;
+	margin-left:100px;
+}
+.group_menu ul li:first-child{
+	list-style:none;
+}
+.group_menu ul li a{
+	color:#fff;
+	font-weight:bold;
+	text-decoration:none;
+}
+.imgl{
+   width:270px;
+   height:200px;
+   border:#e3e3e3  1px solid;
+   padding:5px;
+}
+</style>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#contents_intro").animate({opacity:1.0,width:'show'},500);
+	$("#contents_active").hide();
+	$("#contents_zoom").hide();
+	$("#contents_com").hide();
+	$("#intro").click(function(){ 
+		$("#contents_active").hide();
+		$("#contents_zoom").hide();
+		$("#contents_com").hide();
+		$("#contents_intro").animate({opacity:1.0,width:'show'},500);
+	});
+	$("#active").click(function(){ 
+		$("#contents_active").animate({opacity:1.0,width:'show'},500);
+		$("#contents_zoom").hide();
+		$("#contents_com").hide();
+		$("#contents_intro").hide();
+	});
+	$("#zoom").click(function(){ 
+		$("#contents_active").hide();
+		$("#contents_zoom").hide();
+		$("#contents_com").animate({opacity:1.0,width:'show'},500);
+		$("#contents_intro").hide();
+	});
+	$("#com").click(function(){ 
+		$("#contents_active").hide();
+		$("#contents_zoom").animate({opacity:1.0,width:'show'},500);
+		$("#contents_com").hide();
+		$("#contents_intro").hide();
+	});
+});
+</script>
+</head>
+<body>
+<div id="header">
+  <div class="group_menu" >
+    <ul>
+      <li><br /></li><li><a href="javascript:;" id="intro">简介</a></li>
+      <li><a href="javascript:;" id="active">活动</a></li>
+      <li><a href="javascript:;" id="zoom">社区</a></li>
+      <li><a href="javascript:;" id="com">奖励</a></li>
+    </ul>  
+  </div>
+  <div class="top"> 
+    <ul>
+      <li><a href="login">登陆</a></li>
+      <li><a href="regist">注册</a></li>
+      <li><a href="index">首页</a></li>
+    </ul>
+  </div>
+</div>
+<div id="contents_intro">
+
+        <div class="paddingrightbox">
+		<h1 style="text-align:center;color:#D9930B;font-size:24px;font-weight:bold">西邮linux兴趣小组简介</h1><br/>
+		 <p style="text-indent:2em">西邮Linux兴趣小组直属于西安邮电学院计算机学院，由王亚刚老师,王聪,刘洋等同学于2006年9月策划并组建,现已成为陕西高校中具有深远影响力的技术小组。</p>
+
+         <p style="text-indent:2em">小组本着"学习Linux系统，崇尚自由软件，宣传开源文化"的精神，在Linux的学习和应用中起到了带头的作用！小组成员主要学习方向有：Linux平台应用软件开发、
+	  Linux平台嵌入式开发、Linux内核分析、Linux服务器配置等。 </p>
+        </div>
+  
+        <div class="paddingrightbox">
+		<h2>小组文化</h2>
+		<p style="text-indent:2em">西邮Linux兴趣小组追求的是一种开放、自由、分享的文化。在这里，我们所有的成员组成一个大家庭;在这里，我们携手走进Linux世界，走进计算机世界，
+		享受技术所带来的乐趣；我们抵制平庸，追求充满激情的生活，追求自由开放的精神;我们喜爱Linux，热爱开源文化,崇尚自由的技术世界和头脑风暴式的技术探讨；
+		在这里，没有所谓的权威,没有所谓的规矩，也没有任何的等级观念；在这里，每个成员都是主人，每个成员都可以宣扬自己优秀的个性。我们的目标是发展一批批优
+		秀的计算机人才。
+        </p>
+
+        </div>
+
+        <div class="paddingrightbox">
+        <h2>小组的历史</h2>
+		<p style="text-indent:2em">目前，西邮Linux兴趣小组已经五岁了，从其创办到现在，在学校领导和社会各界的支持下，已经完成了一些大小项目，参与了许多开源项目，在同学们的热情参与下我们成功地举行了各种讲座和聚会，
+		在开源文化知识学习领域有了一定的经验基础，在Linux方面也有了自己的一套学习研究。如今无论是从Linux的学习上，技术的讨论上，各类技术活动的组织上，亦或是管理上都有了自己独特的一面。
+		目前小组成员共60多名，在校成员40余人，还有许多参与新闻组讨论的非小组成员，他们包括离校学长、其他学校和社会上的Linux技术爱好者。今后，这支朝气蓬勃的团队还将会不断发展壮大，
+		以更加饱满的热情为大家营造一个面向开源的技术氛围。</p>
+	    <p style="text-indent:2em">在此，西邮Linux兴趣小组要特别感谢Coly。Coly毕业于北邮，目前在Novell工作。他目前的兴趣，工作方向为ext4,MLXOS,yast。感谢他无私的把自己珍藏的书籍送给我们小组，
+		感谢他在学习和工作上对我们的指导。 </p>
+        </div>
+		<div class="paddingrightbox">
+		<h2>小组目前状况</h2>
+		<p style="text-indent:2em">西邮Linux兴趣小组目前在校成员40余人，分别来自大二、大三和大四，大二、大三是主力。我们是一个多元化的小组，在这里，我们研究Linux内核，学习Linux下的应用程序开发，
+		进行Linux下嵌入式开发，进行Linux服务器的配置，学习业界的一些最新技术。目前我们每个星期都进行相关的技术讲座，有C语言技术讲座，Linux基本应用技术讲座，Linux下应用程
+		序开发技术讲座，Linux服务器配置技术讲座等，主讲人员主要是我们小组的成员，他们对与自己讲座相关的技术都有着比较深入的理解和研究，能给出自己对相关技术的观点。如今我
+		们小组已和西安一些高校（西电、西安理工大学、陕西科技大学）成立了西安开源联盟，共同宣传开源文化。
+        </p>
+		</div>
+      <div class="paddingrightbox">
+		<h1 style="text-align:center;color:#D9930B;font-size:24px;font-weight:bold">辅导老师</h1><br />
+		<img alt="陈丽君老师" src="./images/chenlijun.jpg" style="width:300px;height:220px;border:#e3e3e3 1px solid;padding:3px"/>
+		 <p style="text-indent:2em">
+		 陈莉君教授，国内Linux内核专家，对Linux内核的研究有很深的造诣。陈老师自98年来一直致力于推动Linux在中国的发展，深入研究Linux内核相关理论以及技术，
+		 积极跟踪Liunx内核发展动向，为Linux爱好者默默提供着无私帮助。陈老师在我们兴趣小组发展上倾入了大量的心血。陈老师在Linux研究、学习思想上给了我们很
+		 多的指导，让我们在Linux学习上或者是计算机科学的领悟上都有了一个很大的提高，鼓励我们突破思维的束缚，不断地去进行创新和发展自我。 
+		  </p>
+        </div>
+  
+        <div class="paddingrightbox">
+		<img alt="王亚刚老师" src="./images/wangyagang.jpg" style="width:300px;height:220px;border:#e3e3e3 1px solid;padding:3px"/>
+		<p style="text-indent:2em">
+		王亚刚教授，毕业于西北大学计算机系，长期从事计算机网络和嵌入式Linux系统的开发和教学工作，评教成绩突出。
+		承担多项科研项目的开发，他对Linux内核的裁剪有着相当丰富的经验。从我们兴趣小组最初的成立，到目前小组各项
+		活动的进行，他都倾注了很大心血。王老师在Linux，C语言，Java以及编程思想等许多方面都使我们受益匪浅，他给了
+		小组成员发展自我优秀个性的空间，鼓励学生去发现自我，完善自我。
+                      还有很多的老师也给予了我们大量的支持！在此，我们小组全体成员向所有支持我们小组的老师表示衷心的感谢！ 
+        </p>
+
+        </div>
+</div>
+<div id="contents_active">
+
+        <div class="paddingrightbox">
+		<h1 style="text-align:center;color:#D9930B;">小组活动</h1>
+		<p style="font-weight: bold">2010年5月 西安高校开源技术巡回讲座</p>
+		<p>此系列讲座由西部开源技术中心与xiyoulinux兴趣小组合作举办，主要是进行Linux开源技术方面的宣传。</p>
+		<p style="font-weight: bold">2009年9月 第六届国际自由软件日</p>
+		<img src="./images/active/active_05.jpg" class="imgl"/>
+		<p>http://www.xiyoulinux.org/blog/?p=133</p>
+		<p>此次活动得到了中国开源推进联盟、SUN公司、中科红旗、中标的大力支持。</p>
+		<p style="font-weight: bold">2009年3月15日 西安CU网友第一次聚会</p>
+		<img src="./images/active/active_04.jpg" class="imgl"/>
+		<p>http://www.xiyoulinux.cn/blog/?p=119</p>
+		<p>这次活动得到了chinaunix的官方支持，而且chinaunix论坛:marsaber,itpub论坛版主:南非蚂蚁,chinaunix论坛版主:kns1024wh分别为我们作了SELINUX，
+		      群集应用，定制Linux发行版的主题演讲。 </p>
+		<p style="font-weight: bold">2008年11月27日 华为公司内核开发者lokesh来西邮交流</p>
+		<p>http://www.xiyoulinux.cn/blog/?p=101</p>
+		<p>lakesh为大家介绍如何学习内核开发，并对我们的日常工作进行了指导。</p>
+		<p style="font-weight: bold">2008年9月20日 第五届国际自由软件日</p>
+		<img src="./images/active/active_03.jpg" class="imgl"/>
+		<p>http://www.xiyoulinux.cn/blog/?p=103</p>
+		<p>此次活动受到了哲思自由软件社区(zeuux.org)和17LAMP.net网站的大力支持,同时也受到了西部开源技术中心的大力支持。</p>
+        <p style="font-weight: bold">2008年8月12日 西安软件园-开源行动日</p>
+        <p>http://www.xiyoulinux.cn/blog/?p=101</p>
+        <p>此次活动是由Intel、Sun、Ibm等主办的源行动日，历时一天，Intel，Sun，Ibm公司的技术人员为我们做了关于新技 术的介绍，让大家受益匪浅。</p>
+        <p style="font-weight: bold">2008年3月19日 开源校园行-西邮站</p>
+        <p>http://www.xiyoulinux.cn/blog/?p=79</p>
+        <p>此次活动是由国内知名开源人士于2003年发起，旨在各大高校宣传开源文化，为高校师生、社会团体、公司机构搭建一个开放的交流平 台，帮助更多的人了解开源世界的五彩缤纷和发展前景、
+                      参与开源，共同推动全球开源软件运动的发展。主讲人介绍程勇(Peter Cheng)，国内开源运动的布道者，huihoo.org 开源社区协同创始人。 </p>
+         <p style="font-weight: bold">2008年5月28日 自由软件之父Richard Stallman来到西邮</p>
+         <p>http://www.xiyoulinux.cn/blog/?p=89</p>
+         <p>Richard Stallman为我们讲解了自由软件的概念以及他对自由软件的看法。这次活动得到了系里韩俊刚主任的认可，陈莉君、王 亚刚老师也给了大力的支持。</p>
+        <p style="font-weight: bold">2008年3月19日 开源校园行-西邮站</p>
+        <p>http://www.xiyoulinux.cn/blog/?p=79</p>
+        <p>此次活动是由国内知名开源人士于2003年发起，旨在各大高校宣传开源文化，为高校师生、社会团体、公司机构搭建一个开放的交流平台，帮助更多的人了解开源世界的五彩缤纷和发展前景、
+                        参与开源，共同推动全球开源软件运动的发展。主讲人介绍程勇(Peter Cheng)，国内开源运动的布道者，huihoo.org开源社区协同创始人。 </p>
+        <p style="font-weight: bold">2007年11月1日内核开发者-Herbert Xu</p>
+        <img alt="" src="./images/active/active_02.jpg" class="imgl"/>
+        <p>http://www.xiyoulinux.cn/blog/?p=57</p>
+        <p>Herbert Xu是旅居澳洲的华人，也是一个资深的内核开发者。他负责维护Linux内核的Crypto API部分。他与我们小组成员进行了面对面的交流，并为西邮学生做了一次精彩的演讲。</p>
+        <p style="font-weight: bold">2007年9月16日 第四届国际自由软件日</p>
+        <img alt="" src="./images/active/active_01.jpg" class="imgl"/>
+        <p>http://www.xiyoulinux.cn/blog/?p=49</p>
+        <p>出席本次活动的嘉宾有西安邮电学院计算机系副主任王忠民、计算机系陈莉君教授、中国自由软件协会王开源老师、“哲思自由软件社团”创始人徐继哲先生、中科（西安）红旗LINUX集团发言人、
+                            香港基石集团驻西安发言人等，我院师生及其他高校同学共300余人参加了本次活动。</p>
+        </div>
+      </div>
+    </div>
+
+
+</div>
+<div id="contents_zoom">
+        <div class="paddingrightbox">
+	<div id='intro_title'><h2>校外奖励：</h2></div>
+<div id="intro_text">
+	<p>
+		<b>1.  中科院第二届开源软件设计大赛</b>
+	</p>
+	<p>
+		2007年10月，我们小组参加了中科院第二届开源软件设计大赛，参赛项目XylFTP获得了优秀奖若干，代码规范等受到了高度评价。
+	</p>
+	<p>
+	<b>2. 全国挑战杯二、三等奖</b>
+	</p>
+	
+	<p>
+	<b>3. 第一届红旗Linux知识竞赛团体三等奖，个人金奖、银奖若干</b>
+	</p>
+    <p><img src="./images/reward/redflag_01.jpg"><img src="./images/reward/redflag_02.jpg"><img src="./images/reward/redflag_03.jpg"></p>
+    <p>
+	<b>4. 第二届红旗Linux知识竞赛团体二等奖，个人金奖、银奖若干</b>
+	</p>
+    <p><img src="./images/reward/redflag_04.jpg"><img src="./images/reward/redflag_04.jpg"><img src="./images/reward/redflag_06.jpg"></p>
+  <p>
+	<b>5．第三届红旗Linux知识竞赛个人银奖若干</b>
+	</p>
+	<p><img src="./images/reward/awards_01.jpg"></p>
+	<p>
+	<b>6．红帽首届大学生Linux技能大赛优胜奖若干</b>
+	</p>
+	<p><img src="./images/reward/redhat_01.jpg"><img src="././images/reward/redhat_02.jpg"></p>
+	<p>
+	<b>7．第六届博创杯获奖若干</b>
+	</p>
+	<p><img src="./images/reward/bochuang_01.jpg"><img src="././images/reward/bochuang_02.jpg"></p>
+	<p><img src="./images/reward/bochuang_03.jpg"></p>
+	<p>
+	<b>8. 全国intel杯获奖奖若干</b>
+	</p>
+	<p><img src="./images/reward/intel_01.jpg"><img src="././images/reward/intel_02.jpg"></p>
+  <p>
+	<b>9．国际开源软件日优秀组织奖</b>
+	</p>
+	<p><img src="././images/reward/ruanjianri.jpg"></p>
+  <p>
+	<b>10．首届全国大学生UML建模创造力大赛 入围奖</b>
+	</p>
+	<p><img src="././images/reward/UML.jpg"></p>
+  <p>
+	<b>11．第七届博创杯全国大学生嵌入式设计大赛西北赛区一等奖</b>
+	</p>
+	<p><img src="././images/reward/bochuang.jpg"></p>
+  <p>
+	<b>12．全国挑战杯竞赛陕西赛区荣获特等奖，三等奖</b>
+	</p>
+    <p><img src="././images/reward/Intelligent platform.jpg"></p>
+	<p>
+	<b>13．2011年，全国软件专业人才设计与开发大赛陕西省赛一等奖</b>
+	</p>
+	<p>
+	<b>14．陕西省首届Linux技能大赛团体优秀奖</b>
+	</p>
+  <p>
+	<b>15．其他奖励若干</b>
+	</p>
+	<p><img src="././images/reward/awards_03.jpg"></p>
+	<p><img src="././images/reward/awards_04.jpg"></p>
+</div>
+<div id='intro_title'><h2>校内奖励：</h2></div>
+<div id="intro_text">
+	<p>
+		<b>1．西安邮电学院第一届周立功杯C语言大赛特等奖，一等奖，二等奖若干</b>
+	</p>
+	<p>
+	<b>2．西安邮电学院第二届周立功杯C语言大赛二、三等奖若干</b>
+	</p>
+	<p>
+	<b>3．西安邮电学院第二届周立功杯嵌入式竞赛优胜奖若干</b>
+	</p>
+	<p><img src="./images/reward/awards_02.jpg"></p>
+</div>
+        </div>
+      </div>
+
+</div>
+<div id="contents_com">
+
+        <div class="paddingrightbox">
+ <p>
+ 			
+ 			<h1 style="text-align:center;color:#D9930B;">参与开源社区</h1>
+            <b>1) kernel.org ──Linux内核开发社区</b>
+            </p>
+            <p>补丁提交若干，翻译、校对技术文档若干。<br/>
+         	   Git地址：<br/>
+                   http://www.kernel.org/pub/scm/Linux/kernel/git/torvalds/Linux-2.6.git<br/>
+               邮件列表地址：<br/>
+                  http://lkml.org<br/>
+            </p>
+            <p>
+            <b>2) zeuux.org──哲思自由软件社区</b>
+            </p>
+            <p>
+                 参与撰写、翻译、校验文档：<br/>
+                 • 《哲思技术文档》参与撰写<br/>
+                 • 《哲思自由软件图书》参与撰写<br/>
+                 • 《可爱的Python》文章撰写和技术校对<br/>
+                 • 《自由软件，自由社会》翻译<br/>
+            </p>
+            <p>
+            <b>3) zh-kernel.org──Linux开发中文社区</b>
+            </p>
+            <p>
+                 • HOWTO http://wiki.zh-kernel.org/doc/HOWTO 参与编写<br/>
+			     • 为中文内核社区翻译文档若干<br/>
+            </p>
+            <p>
+            <b>4) kerneltravel.net──陈莉君老师的内核之旅</b>
+            </p>
+            <p>
+                网站维护、文档翻译等。<br/>
+                 • GNU-C扩展<br/>
+                     http://www.kerneltravel.net/newbie/gcc_man.html<br/>
+                 详见：<br/>
+                     http://xiyoulinux.cn/speechdoc/contribution.html<br/>
+            </p>
+            <p>
+            <b>5）技术杂志稿件</b>
+            </p>
+            <p>
+                在《网络管理员》、《开源杂志》杂志上发表技术文若干<br/>
+            </p>
+             <p>
+            <b>6）ChinaUnix开源社区建立了XYLinux博客群</b>
+            </p>
+            <p>
+                详见：</br>
+                http://blog.chinaunix.net/group/group_1475.html<br/>
+            </p>
+   </div>
+   </div>
+	<div style="clear:both"></div>
+	<div id="footer"> 
+    <address>
+    	CopyRight-xiyoulinux 2006-2013 
+    </address>
+	</div>	
+   </div>
+</body>
+</html>
+

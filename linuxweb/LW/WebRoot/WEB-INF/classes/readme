@@ -1,0 +1,11 @@
+1.linux_db_sql文件为数据库表相关sql代码，复制运行就好
+
+2.jdbc.properties 
+	username=root
+	password=heyuhang
+  为mysql  账号和密码
+3.admin.properties 设置的是管理员账号密码，只要申请一个相同的账号 密码 就可以进行置顶操作
+
+4.struts.properties 中struts.multipart.saveDir=d\:/temp字段设置上传的临时文保存
+
+5.test.log为log文件

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<!-- 激活重新载入国际文件功能 -->
+	<constant name="struts.il8n.encoding" value="true"/>
+	<constant name= "struts.multipart.maxSize" value="104857600" />
+
+    <package name="struts2" extends="struts-default" namespace="/">
+		<action name="land" class="com.hyh.Action.LandAction">
+			<result name="success" type="chain">index</result>
+			<result name="input" type="chain">login</result>
+		</action>
+  		<action name="adduser" class="com.hyh.Action.AdduserAction">
+			<result name="success" type="redirectAction">login</result>
+		</action> 
+  		<action name="regist" class="com.hyh.Action.LoginAction">
+			<result>regist.jsp</result>
+		</action> 
+  		<action name="search" class="com.hyh.Action.SearchAction">
+			<result>search.jsp</result>
+		</action> 
+  		<action name="index" class="com.hyh.Action.IndexAction">
+			<result>index.jsp</result>
+			<result name="input" type="redirectAction">user</result>
+		</action>
+  		<action name="qa" class="com.hyh.Action.QaAction">
+			<result>qa.jsp</result>
+		</action>
+  		<action name="user" class="com.hyh.Action.UserAction">
+			<result name="success">user.jsp</result>
+			<result name="input" type="chain">index</result>
+		</action>
+  		<action name="sort" class="com.hyh.Action.SortAction">
+			<result>label.jsp</result>
+		</action>
+  		<action name="login" class="com.hyh.Action.LoginAction">
+			<result>login.jsp</result>
+		</action>
+  		<action name="trends" class="com.hyh.Action.TrendsAction">
+			<result>replay.jsp</result>
+		</action>
+  		<action name="delreplay" class="com.hyh.Action.DelReplayAction">
+			<result>replay.jsp</result>
+		</action>
+  		<action name="delall" class="com.hyh.Action.DelReplayAction" method="delall">
+			<result>replay.jsp</result>
+		</action>
+  		<action name="filesupload" class="com.hyh.Action.UploadAction">
+			<result type="redirectAction">user</result>
+			<interceptor-ref name="fileUpload">
+                <!-- 文件过滤 -->
+                <!-- 文件大小, 以字节为单位 -->
+                <param name="maximumSize">104857600</param>
+            </interceptor-ref>
+            <!-- 默认拦截器必须放在fileUpload之后，否则无效 -->
+            <interceptor-ref name="defaultStack" />
+		</action>
+  		<action name="aqupload" class="com.hyh.Action.QaUploadAction">
+			<result type="redirectAction">user</result>
+		</action>
+		<action name="visit" class="com.hyh.Action.VisitAction">
+			<result>visit.jsp</result>
+		</action>
+		<action name="exit" class="com.hyh.Action.ExitAction">
+			<result type="chain">index</result>
+		</action>
+	
+        <action name="download" class="com.hyh.Action.DownloadAction">  
+            <!-- 设置文件名参数，由页面上传入 -->  
+            <param name="fileName"></param>  
+            <result name="success" type="stream">  
+                <!-- 下载文件类型定义 -->  
+                <param name="contentType">text/plain</param>  
+                <!-- 下载文件处理方法 -->  
+                <param name="contentDisposition">  
+                    attachment;filename="${downloadChineseFileName}"  
+                </param>  
+                <!-- 下载文件输出流定义 -->  
+                <param name="inputName">downloadFile</param>  
+            </result>  
+        </action> 
+    </package>
+
+	<!-- 注意这里扩展不再是 struts-default,而是 json-default --> 
+	<package name="jsonManager" extends="json-default" namespace="/"> 
+
+	<action name="comment" class="com.hyh.Action.CommentAction"> 
+		<result type="json">
+			<param name="root">comments</param>
+		</result>
+	</action> 
+	<action name="answer" class="com.hyh.Action.AnswerAction"> 
+		<result type="json">
+			<param name="root">comments</param>
+		</result>
+	</action>  
+	<action name="addans" class="com.hyh.Action.AddAnsAction"> 
+		<result type="json">
+			<param name="root">comments</param>
+		</result>
+	</action>   
+  	<action name="approve" class="com.hyh.Action.ApproveAction">
+		<result type="json">
+			<param name="root">approve</param>		
+		</result>
+	</action>
+  	<action name="approvezan" class="com.hyh.Action.ApproveAction" method="support">
+		<result type="json">
+			<param name="root">approve</param>		
+		</result>
+	</action>
+  	<action name="support" class="com.hyh.Action.SupportAction">
+		<result type="json">
+			<param name="root">approve</param>		
+		</result>
+	</action>
+  	<action name="addcom" class="com.hyh.Action.AddComAction">
+		<result type="json" name="success">
+			<param name="root">comments</param>
+		</result>
+		<result type="json" name="input">
+			<param name="root">msg</param>
+		</result>
+	</action>
+  	<action name="updatemsg" class="com.hyh.Action.MsgAction">
+		<result type="chain">user</result>
+		<interceptor-ref name="fileUpload">
+                <!-- 文件过滤 -->
+                <param name="allowedTypes">image/bmp,image/png,image/gif,image/jpeg</param>
+                <!-- 文件大小, 以字节为单位 -->
+                <param name="maximumSize">104857600</param>
+        </interceptor-ref>
+        <!-- 默认拦截器必须放在fileUpload之后，否则无效 -->
+        <interceptor-ref name="defaultStack" />
+	</action>
+ 	<action name="updatecount" class="com.hyh.Action.CountAction">
+		<result type="json">
+			<param name="root">msg</param>
+		</result>
+	</action>	
+ 	<action name="addattention" class="com.hyh.Action.AttentionAction">
+		<result type="json">
+			<param name="root">msg</param>
+		</result>
+	</action>
+ 	<action name="message" class="com.hyh.Action.MessageAction">
+		<result type="json">
+			<param name="root">messages</param>
+		</result>
+	</action>
+ 	<action name="cancleattr" class="com.hyh.Action.CancleattAction">
+		<result type="json">
+			<param name="root">msg</param>
+		</result>
+	</action>
+ 	<action name="checkusername" class="com.hyh.Action.AdduserAction" method="check">
+		<result type="json">
+			<param name="root">judge</param>
+		</result>
+	</action>
+ 	<action name="settop" class="com.hyh.Action.SetTopAction" method="settop">
+		<result type="json">
+			<param name="root">msg</param>
+		</result>
+	</action>	
+ 	<action name="deltop" class="com.hyh.Action.SetTopAction" method="deltop">
+		<result type="json">
+			<param name="root">msg</param>
+		</result>
+	</action>	
+	<action name="delfile" class="com.hyh.Action.DelFiles">
+		<result type="json">
+			<param name="root">msg</param>
+		</result>
+	</action>			
+</package>
+
+</struts> 
+
+
